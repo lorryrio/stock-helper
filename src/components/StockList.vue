@@ -5,7 +5,7 @@
         <span class="name">{{item}}</span>
       </div>
     </header>
-    <div class="stock-item" v-for="item in symbolItems" :key="item.quote.name">
+    <main class="stock-item" v-for="item in symbolItems" :key="item.quote.name">
       <div class="item-name item-column">
         <span class="name">{{item.quote.name}}</span>
         <span class="symbol">{{item.quote.symbol}}</span>
@@ -28,7 +28,10 @@
       <div class="item-market_capital item-column">
         <span>{{(item.quote.market_capital / 100000000).toFixed(1)}}</span>
       </div>
-    </div>
+    </main>
+    <footer>
+      <span>当价格低于参考价时可考虑买入</span>
+    </footer>
   </div>
 </template>
 
@@ -80,7 +83,9 @@ export default {
 <style scoped lang="scss">
 .stock-list {
   width: 100%;
+  padding-top: 10px;
   header {
+    border-top: 1px solid #edf0f5;
     &.stock-item {
       font-size: 12px;
       font-weight: 400;
@@ -122,6 +127,13 @@ export default {
         color: #a3aab1;
       }
     }
+  }
+  footer {
+    width: 100%;
+    font-size: 12px;
+    color: #a3aab1;
+    text-align: center;
+    margin-top: 30px;
   }
 }
 </style>
