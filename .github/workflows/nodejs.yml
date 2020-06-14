@@ -3,7 +3,7 @@ name: 'GitHub Actions For stock-helper'
 on:
   push:
     branches:
-      - release
+      - master
 
 jobs:
   build-and-deploy:
