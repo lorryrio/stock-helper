@@ -3,7 +3,7 @@ name: 'GitHub Actions For stock-helper'
 on:
   push:
     branches:
-      - master
+      - release
 
 jobs:
   build-and-deploy:
@@ -17,5 +17,5 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: master
-        FOLDER: "docs"
+        FOLDER: "."
         BUILD_SCRIPT: npm install && npm run build
