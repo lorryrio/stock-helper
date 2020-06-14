@@ -2,15 +2,20 @@ name: 'GitHub Actions For stock-helper'
 
 on:
   push:
+    branches:
+      - master
 
 jobs:
-  bot:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: 'Install node'
-        uses: actions/setup-node@v1
-      - name: 'Install NPM dependencies'
-        run: npm install
-      - name: 'Run code'
-        run: npm run build
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build
+        BUILD_SCRIPT: npm install && npm run build
