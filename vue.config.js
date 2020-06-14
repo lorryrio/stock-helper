@@ -12,7 +12,7 @@ module.exports = {
         patterns: [
           {
             from: path.join(__dirname, './static'),
-            to: path.join(__dirname, './docs'),
+            to: path.join(__dirname, './'),
             toType: 'dir',
           },
         ],
