@@ -19,13 +19,13 @@
       >
         <span>{{item.config.target_0}}</span>
       </div>
-      <div class="item-chg item-column" :class="item.quote.current >=0 ? 'gain' : 'slip'">
+      <div class="item-chg item-column" :class="item.quote.chg >=0 ? 'gain' : 'slip'">
         <span>{{item.quote.chg}}({{item.quote.percent}})</span>
       </div>
       <div class="item-volume item-column">
         <span>{{(item.quote.volume / 10000).toFixed(1)}}</span>
       </div>
-      <div class="item-current item-column">
+      <div class="item-market_capital item-column">
         <span>{{(item.quote.market_capital / 100000000).toFixed(1)}}</span>
       </div>
     </div>
