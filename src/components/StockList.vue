@@ -2,25 +2,26 @@
   <div class="stock-list">
     <header class="stock-item">
       <div class="item-column" v-for="item in header" :key="item">
-        <span class="name">{{item}}</span>
+        <span class="name" v-html="item"></span>
       </div>
     </header>
     <main class="stock-item" v-for="item in symbolItems" :key="item.quote.name">
       <div class="item-name item-column">
         <span class="name">{{item.quote.name}}</span>
-        <span class="symbol">{{item.quote.symbol}}</span>
+        <span class="small">{{item.quote.symbol}}</span>
       </div>
       <div class="item-current item-column">
         <span>{{item.quote.current}}</span>
       </div>
       <div
         class="item-target item-column"
-        :class="{'strong': item.config.target_0 >= item.quote.current}"
+        :class="{'strong': item.config.target_0 >= item.quote.current || premium(item) < 10}"
       >
         <span>{{item.config.target_0}}</span>
+        <span class="small">{{premium(item)}}%</span>
       </div>
       <div class="item-chg item-column" :class="item.quote.chg >=0 ? 'gain' : 'slip'">
-        <span>{{item.quote.chg}}({{item.quote.percent}}%)</span>
+        <span>{{item.quote.chg}}<br>({{item.quote.percent}}%)</span>
       </div>
       <div class="item-volume item-column">
         <span>{{(item.quote.volume / 10000).toFixed(1)}}</span>
@@ -48,10 +49,10 @@ export default {
       header: [
         '名称',
         '当前价',
-        '参考价',
+        '参考价<br>溢价',
         '涨跌幅',
-        '成交量(万股)',
-        '市值(亿)',
+        '成交量<br>(万股)',
+        '市值<br>(亿)',
       ],
       symbolItems: [],
     };
@@ -74,6 +75,9 @@ export default {
       } else {
         console.log('瞅啥呢，接口出错了');
       }
+    },
+    premium(item) {
+      return ((100 * (item.quote.current - item.config.target_0)) / item.config.target_0).toFixed(2);
     },
   },
 };
@@ -102,6 +106,10 @@ export default {
     font-size: 14px;
     border-bottom: 0.5px solid #edf0f5;
     text-align: center;
+    .small {
+      font-size: 12px;
+      color: #a3aab1;
+    }
     .item-column {
       flex: 1;
     }
@@ -122,10 +130,12 @@ export default {
       .name {
         // font-weight: bold;
       }
-      .symbol {
-        font-size: 12px;
-        color: #a3aab1;
-      }
+    }
+    .item-target {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
   }
   footer {
