@@ -38,6 +38,11 @@ const symbolList = [{
   name: '立讯精密',
   target_0: 40,
   target_1: 0,
+}, {
+  symbol: 'SZ000063',
+  name: '中兴通讯',
+  target_0: 40,
+  target_1: 0,
 }];
 
 export default { symbolList };
