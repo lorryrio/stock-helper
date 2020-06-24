@@ -43,6 +43,16 @@ const symbolList = [{
   name: '中兴通讯',
   target_0: 40,
   target_1: 0,
+}, {
+  symbol: 'SH600585',
+  name: '海螺水泥',
+  target_0: 48,
+  target_1: 0,
+}, {
+  symbol: 'SH600031',
+  name: '三一重工',
+  target_0: 17,
+  target_1: 0,
 }];
 
 export default { symbolList };
