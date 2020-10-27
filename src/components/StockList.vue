@@ -91,23 +91,23 @@ export default {
   header {
     border-top: 1px solid #edf0f5;
     &.stock-item {
-      font-size: 12px;
+      font-size: 24px;
       font-weight: 400;
       text-align: center;
     }
   }
   .stock-item {
     width: 100%;
-    height: 52px;
+    height: 104px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 28px;
     border-bottom: 0.5px solid #edf0f5;
     text-align: center;
     .small {
-      font-size: 12px;
+      font-size: 24px;
       color: #a3aab1;
     }
     .item-column {
@@ -140,7 +140,7 @@ export default {
   }
   footer {
     width: 100%;
-    font-size: 12px;
+    font-size: 24px;
     color: #a3aab1;
     text-align: center;
     margin-top: 30px;
